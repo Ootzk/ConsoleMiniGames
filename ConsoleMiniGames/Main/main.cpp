@@ -1,14 +1,12 @@
 #include <iostream>
 
 #include "core.h"
+#include "screens.h"
 
 int main() {
 	std::cout << "hello world!" << std::endl;
-
-	while (true) {
-		KEY key = getKEY();
-		if (key == KEY::SELECT) std::cout << "something selected!" << endl;
-	}
+	MainScreen M;
+	M.loop();
 
 	return 0;
 }
