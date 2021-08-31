@@ -9,6 +9,9 @@ void MainScreen::_init()
     moveCursor();
     setPalette(COLOR::LIGHTGREEN, COLOR::BLACK);
     std::cout << "\
+                                                                               \n\
+                                                                               \n\
+                                                                               \n\
                  #####                                                         \n\
                 #     #  ####  #    #  ####   ####  #      ######              \n\
                 #       #    # ##   # #      #    # #      #                   \n\

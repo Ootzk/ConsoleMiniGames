@@ -5,7 +5,7 @@ void Engine::_init()
 	// Set Window
 	SMALL_RECT windowSize = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
 	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), true, &windowSize);
-	SetConsoleTitle(L"ESCAPE Game");
+	SetConsoleTitle(L"Console Mini Games!");
 
 	// Hide Cursor
 	CONSOLE_CURSOR_INFO ConsoleCursor;

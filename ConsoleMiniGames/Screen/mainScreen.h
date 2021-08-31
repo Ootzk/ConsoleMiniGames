@@ -9,9 +9,9 @@ class MainScreen : public Screen
 
 private:
 	CHOICES choices = {
-		{STATE::GAMELEVELSELECT, Coordinate{17, 23}},
-		{STATE::CREDIT,          Coordinate{17, 24}},
-		{STATE::EXIT,            Coordinate{17, 25}}
+		{STATE::GAMELEVELSELECT, Coordinate{17, 26}},
+		{STATE::CREDIT,          Coordinate{17, 27}},
+		{STATE::EXIT,            Coordinate{17, 28}}
 	};
 	CURSOR current = choices.cbegin();
 	CURSOR previous = choices.cbegin();
