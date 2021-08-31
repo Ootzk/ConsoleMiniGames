@@ -1,8 +1,8 @@
-# ConsoleMiniGames
+ï»¿# ConsoleMiniGames
 Mini games on windows console implemented by C++
 
 ## Propose of this Project
-"±×¾ß... Àç¹ÌÀÖÀ¸´Ï±î!"
+"ê·¸ì•¼... ìž¬ë¯¸ìžˆìœ¼ë‹ˆê¹Œ!"
 
 ## Patch Notes
 Version 1.0: Started Project! I've established an infrastructrue for future development.
