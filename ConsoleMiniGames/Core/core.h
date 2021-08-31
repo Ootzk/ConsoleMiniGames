@@ -24,7 +24,7 @@ const int FPS = 60;
 
 enum class STATE
 {
-	TITLE,
+	MAIN,
 	CREDIT,
 
 	GAMELEVELSELECT,

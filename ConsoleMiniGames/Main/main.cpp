@@ -1,12 +1,8 @@
-#include <iostream>
-
-#include "core.h"
-#include "screens.h"
+#include "engine.h"
 
 int main() {
-	std::cout << "hello world!" << std::endl;
-	MainScreen M;
-	M.loop();
+	Engine e;
+	e.run();
 
 	return 0;
 }
