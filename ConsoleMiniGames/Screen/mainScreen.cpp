@@ -9,30 +9,37 @@ void MainScreen::_init()
     moveCursor();
     setPalette(COLOR::LIGHTGREEN, COLOR::BLACK);
     std::cout << "\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-             #######  ######  ######     ###     ####### #######               \n\
-             ##      ##      ##         ## ##    ##      ##                    \n\
-             #######  #####  ##        #######   ####### #######               \n\
-             ##           ## ##       ##     ##  ##      ##                    \n\
-             ####### ######   ###### ##       ## ##      #######               \n\
+                 #####                                                         \n\
+                #     #  ####  #    #  ####   ####  #      ######              \n\
+                #       #    # ##   # #      #    # #      #                   \n\
+                #       #    # # #  #  ####  #    # #      #####               \n\
+                #     # #    # #   ## #    # #    # #      #                   \n\
+                 #####   ####  #    #  ####   ####  ###### ######              \n";
+    setPalette(COLOR::YELLOW, COLOR::BLACK);
+    std::cout << "\
+                            #     #                                            \n\
+                            ##   ##  #  #    #  #                              \n\
+                            # # # #  #  ##   #  #                              \n\
+                            #  #  #  #  # #  #  #                              \n\
+                            #     #  #  #    #  #                              \n";
+    setPalette(COLOR::RED, COLOR::BLACK);
+    std::cout << "\
+                       #####                                                   \n\
+                      #     #   ##   #    # ######  ####                       \n\
+                      #        #  #  ##  ## #      #                           \n\
+                      #  #### #    # # ## # #####   ####                       \n\
+                      #     # ###### #    # #           #                      \n\
+                       #####  #    # #    # ######  ####                       \n\
                                                                                \n";
     setPalette(COLOR::WHITE, COLOR::BLACK);
     std::cout << "\
+                                                                               \n\
                          maker: Ootzk(blitz555@dgist.ac.kr)                    \n";
     setPalette(COLOR::LIGHTRED, COLOR::BLACK);
     std::cout << "\
           move: wasd/¡è¡ç¡é¡æ, select: space/enter, pause: p/esc               \n"; //reduce 4 spaces because arrow keys consumes 2 bytes each.
     setPalette(COLOR::WHITE, COLOR::BLACK);
     std::cout << "\
-                                                                               \n\
                                                                                \n\
                                                                                \n\
                                     start game                                 \n\
