@@ -43,7 +43,7 @@ void GameSelectionScreen::_init()
     std::cout << ">";
 }
 
-std::optional<STATE> GameSelectionScreen::_input()
+std::optional<SCREEN> GameSelectionScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
@@ -79,9 +79,9 @@ void GameSelectionScreen::_draw()
     }
 }
 
-std::optional<STATE> GameSelectionScreen::_update()
+std::optional<SCREEN> GameSelectionScreen::_update()
 {
-    std::optional<STATE> maybe = _input();
+    std::optional<SCREEN> maybe = _input();
     _draw();
     _wait();
 
@@ -94,11 +94,11 @@ void GameSelectionScreen::_exit()
     current = choices.cbegin();
 }
 
-STATE GameSelectionScreen::loop()
+SCREEN GameSelectionScreen::loop()
 {
     _init();
 
-    std::optional<STATE> maybe = std::nullopt;
+    std::optional<SCREEN> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }

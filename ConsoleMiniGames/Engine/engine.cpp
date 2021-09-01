@@ -19,12 +19,12 @@ void Engine::run()
 	_init();
 
 	while (true) {
-		switch (state)
+		switch (screen)
 		{
-		case STATE::MAIN:           state = mainScreen->loop(); break;
-		case STATE::GAMELEVELSELECT:state = gameSelectionScreen->loop(); break;
+		case SCREEN::MAIN:           screen = mainScreen->loop(); break;
+		case SCREEN::GAMESELECT:     screen = gameSelectionScreen->loop(); break;
 
-		case STATE::EXIT: return;
+		case SCREEN::EXIT: return;
 		}
 	}
 }
