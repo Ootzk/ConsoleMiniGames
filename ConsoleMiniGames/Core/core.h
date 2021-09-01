@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <cassert>
 #include <chrono>
+#include <iomanip>
 #include <iostream>
 #include <iterator>
 #include <filesystem>
@@ -23,6 +24,9 @@ const char endl = '\n';
 const int WINDOW_WIDTH = 79;
 const int WINDOW_HEIGHT = 43;
 const int FPS = 60;
+
+//alias
+using intP = unsigned int;
 
 
 //core components and related functions.
@@ -76,3 +80,11 @@ enum class COLOR
 	WHITE
 };
 void setPalette(COLOR foreground = COLOR::WHITE, COLOR background = COLOR::BLACK);
+
+enum class DIRECTION
+{
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+};

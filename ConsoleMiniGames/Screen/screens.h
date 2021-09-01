@@ -3,3 +3,4 @@
 #include "mainScreen.h"
 #include "gameSelectionScreen.h"
 #include "creditScreen.h"
+#include "game2048Screen.h"

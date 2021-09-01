@@ -8,8 +8,9 @@ class GameSelectionScreen : public Screen
 
 private:
 	Choices choices = {
-		{SCREEN::MAIN, Coordinate{14, 26}},
-		{SCREEN::EXIT, Coordinate{14, 27}}
+		{SCREEN::GAME2048, Coordinate{14, 8}},
+		{SCREEN::MAIN,     Coordinate{14, 26}},
+		{SCREEN::EXIT,     Coordinate{14, 27}}
 	};
 	Cursor current = choices.cbegin();
 	Cursor previous = choices.cbegin();

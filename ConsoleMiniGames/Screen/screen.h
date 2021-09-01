@@ -7,6 +7,8 @@ enum class SCREEN
 	CREDIT,
 	GAMESELECT,
 
+	GAME2048,
+
 	EXIT
 };
 

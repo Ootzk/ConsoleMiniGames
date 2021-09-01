@@ -18,7 +18,7 @@ void GameSelectionScreen::_init()
 	setPalette();
 	std::cout << "\
                                                                                \n\
-                                                                               \n\
+                                       2048                                    \n\
                                                                                \n\
                                                                                \n\
                                                                                \n\
