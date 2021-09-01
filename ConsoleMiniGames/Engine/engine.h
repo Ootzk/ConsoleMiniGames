@@ -11,7 +11,7 @@ private:
 	void _init();
 
 private:
-	STATE state = STATE::MAIN;
+	SCREEN screen = SCREEN::MAIN;
 
 public:
 	void run();
