@@ -22,20 +22,6 @@ const int WINDOW_WIDTH = 79;
 const int WINDOW_HEIGHT = 43;
 const int FPS = 60;
 
-enum class STATE
-{
-	MAIN,
-	CREDIT,
-
-	GAMELEVELSELECT,
-	GAMEPLAY,
-	GAMEOVER,
-	GAMECOMPLETE,
-	GAMEPAUSE,
-
-	EXIT
-};
-
 
 //core components and related functions.
 struct Coordinate

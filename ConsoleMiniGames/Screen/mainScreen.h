@@ -3,27 +3,26 @@
 
 class MainScreen : public Screen
 {
-	using CHOICE = STATE;
-	using CHOICES = std::unordered_map<CHOICE, Coordinate>;
-	using CURSOR = CHOICES::const_iterator;
+	using Choices = std::unordered_map<SCREEN, Coordinate>;
+	using Cursor = Choices::const_iterator;
 
 private:
-	CHOICES choices = {
-		{STATE::GAMELEVELSELECT, Coordinate{17, 26}},
-		{STATE::CREDIT,          Coordinate{17, 27}},
-		{STATE::EXIT,            Coordinate{17, 28}}
+	Choices choices = {
+		{SCREEN::GAMESELECT,      Coordinate{17, 26}},
+		//{SCREEN::CREDIT,          Coordinate{17, 27}},
+		{SCREEN::EXIT,            Coordinate{17, 28}}
 	};
-	CURSOR current = choices.cbegin();
-	CURSOR previous = choices.cbegin();
+	Cursor current = choices.cbegin();
+	Cursor previous = choices.cbegin();
 
 protected:
 	void _init() override;
-	std::optional<STATE> _input() override;
+	std::optional<SCREEN> _input() override;
 	void _draw() override;
-	std::optional<STATE> _update() override;
+	std::optional<SCREEN> _update() override;
 	void _exit() override;
 
 public:
-	STATE loop() override;
+	SCREEN loop() override;
 };
 

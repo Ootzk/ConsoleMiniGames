@@ -1,6 +1,14 @@
 #pragma once
 #include "core.h"
 
+enum class SCREEN
+{
+	MAIN,
+	GAMESELECT,
+
+	EXIT
+};
+
 class Screen
 {
 protected:
@@ -8,21 +16,13 @@ protected:
 	void _wait();
 
 	virtual void _init() = 0;
-	virtual std::optional<STATE> _input() = 0;
+	virtual std::optional<SCREEN> _input() = 0;
 	virtual void _draw() = 0;
-	virtual std::optional<STATE> _update() = 0;
+	virtual std::optional<SCREEN> _update() = 0;
 	virtual void _exit() = 0;
 
 public:
 	virtual ~Screen();
 
-	virtual STATE loop() = 0;
-};
-
-enum class SCREEN
-{
-	MAIN,
-	GAMESELECT,
-
-	EXIT
+	virtual SCREEN loop() = 0;
 };

@@ -59,7 +59,7 @@ void MainScreen::_init()
     std::cout << ">";
 }
 
-std::optional<STATE> MainScreen::_input()
+std::optional<SCREEN> MainScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
@@ -94,9 +94,9 @@ void MainScreen::_draw()
     }
 }
 
-std::optional<STATE> MainScreen::_update()
+std::optional<SCREEN> MainScreen::_update()
 {
-    std::optional<STATE> maybe = _input();
+    std::optional<SCREEN> maybe = _input();
     _draw();
     _wait();
 
@@ -109,11 +109,11 @@ void MainScreen::_exit()
     current = choices.cbegin();
 }
 
-STATE MainScreen::loop()
+SCREEN MainScreen::loop()
 {
     _init();
 
-    std::optional<STATE> maybe = std::nullopt;
+    std::optional<SCREEN> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }
