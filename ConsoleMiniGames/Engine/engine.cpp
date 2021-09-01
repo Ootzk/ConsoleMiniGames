@@ -22,6 +22,7 @@ void Engine::run()
 		switch (state)
 		{
 		case STATE::MAIN:           state = mainScreen->loop(); break;
+		case STATE::GAMELEVELSELECT:state = gameSelectionScreen->loop(); break;
 
 		case STATE::EXIT: return;
 		}

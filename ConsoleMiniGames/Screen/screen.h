@@ -18,3 +18,11 @@ public:
 
 	virtual STATE loop() = 0;
 };
+
+enum class SCREEN
+{
+	MAIN,
+	GAMESELECT,
+
+	EXIT
+};

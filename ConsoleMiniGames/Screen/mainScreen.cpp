@@ -45,7 +45,7 @@ void MainScreen::_init()
     std::cout << "\
                                                                                \n\
                                                                                \n\
-                                    start game                                 \n\
+                                    select game                                \n\
                                     credits                                    \n\
                                     exit game                                  \n\
                                                                                \n\
