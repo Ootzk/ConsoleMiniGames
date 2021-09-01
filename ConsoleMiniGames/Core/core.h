@@ -16,6 +16,8 @@
 #include <utility>
 
 //constants
+const double VERSION = 1.1;
+
 const char endl = '\n';
 
 const int WINDOW_WIDTH = 79;

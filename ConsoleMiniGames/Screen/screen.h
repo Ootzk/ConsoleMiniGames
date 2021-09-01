@@ -4,6 +4,7 @@
 enum class SCREEN
 {
 	MAIN,
+	CREDIT,
 	GAMESELECT,
 
 	EXIT

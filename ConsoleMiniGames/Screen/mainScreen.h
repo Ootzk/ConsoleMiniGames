@@ -9,7 +9,7 @@ class MainScreen : public Screen
 private:
 	Choices choices = {
 		{SCREEN::GAMESELECT,      Coordinate{17, 26}},
-		//{SCREEN::CREDIT,          Coordinate{17, 27}},
+		{SCREEN::CREDIT,          Coordinate{17, 27}},
 		{SCREEN::EXIT,            Coordinate{17, 28}}
 	};
 	Cursor current = choices.cbegin();
