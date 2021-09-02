@@ -1,12 +1,23 @@
 #include "game2048Screen.h"
 
+void Game2048Screen::_draw(const Board2048& B)
+{
+	intP s = 8, e = 1;
+	for (intP y = 0; y < board_size; ++y) {
+		for (intP x = 0; x < board_size; ++x) {
+			sprites.find(B.at(x, y))->second.draw({ (s + e) * x + 2, (s + e) * y + 2 });
+		}
+	}
+}
+
 void Game2048Screen::_init()
 {
 	_clear();
+	wallpaper.draw();
 
 	moveCursor();
 	setPalette();
-	draw(B);
+	_draw(B);
 }
 
 std::optional<SCREEN> Game2048Screen::_input()
@@ -29,7 +40,11 @@ std::optional<SCREEN> Game2048Screen::_input()
 void Game2048Screen::_draw()
 {
 	moveCursor();
-	draw(B);
+	_draw(B);
+	moveCursor({ 23, 40 });
+	std::cout << B.movements();
+	moveCursor({ 36, 40 });
+	std::cout << B.maxblock();
 }
 
 std::optional<SCREEN> Game2048Screen::_update()
@@ -43,6 +58,7 @@ std::optional<SCREEN> Game2048Screen::_update()
 
 void Game2048Screen::_exit()
 {
+	B.clear();
 }
 
 SCREEN Game2048Screen::loop()

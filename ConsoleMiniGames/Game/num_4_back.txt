@@ -1,8 +1,7 @@
 rrrrrrrrrrrrrrrr
-rrrrrrrrXXrrrrrr
-rrrrrrXrrXrrrrrr
-rrrrXrrrrXrrrrrr
-rrrXrrrrrXrrrrrr
+rrrrrXXrrXrrrrrr
+rrrrXXrrrXrrrrrr
+rrrXXrrrrXrrrrrr
 rrrXXXXXXXXXXrrr
 rrrrrrrrrXrrrrrr
 rrrrrrrrrXrrrrrr
