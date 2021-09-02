@@ -10,6 +10,7 @@ private:
 	std::unique_ptr<Screen> creditScreen = std::make_unique<CreditScreen>();
 	std::unique_ptr<Screen> game2048Screen = std::make_unique<Game2048Screen>();
 	std::unique_ptr<Screen> gameOverScreen = std::make_unique<GameOverScreen>();
+	std::unique_ptr<Screen> gameClearScreen = std::make_unique<GameClearScreen>();
 
 	void _init();
 
