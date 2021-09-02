@@ -11,14 +11,20 @@ private:
 
 	intP size = 4;
 	board B = {
-		{0, 0, 2, 0},
-		{0, 0, 0, 2},
+		{0, 0, 0, 0},
+		{0, 0, 0, 0},
 		{0, 0, 0, 0},
 		{0, 0, 0, 0}
 	};
 
+	std::mt19937 eng{ std::random_device{} () };
+	std::uniform_int_distribution<int> dis{ 0, size * size - 1 };
+
+private:
+	void generate_random_block(int num_blocks=1);
+
 public:
-	Board2048() {};
+	Board2048();
 
 	void shift(const DIRECTION& dir);
 };

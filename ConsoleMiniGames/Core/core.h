@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <fstream>
 #include <optional>
+#include <random>
 #include <string>
 #include <sstream>
 #include <variant>
@@ -28,7 +29,6 @@ const int FPS = 60;
 
 //alias
 using intP = unsigned int;
-
 
 //core components and related functions.
 struct Coordinate
