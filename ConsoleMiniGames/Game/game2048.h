@@ -11,11 +11,17 @@ private:
 
 	intP size = 4;
 	board B = {
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
+		{0, 2, 4, 8},
+		{16, 32, 64, 128},
+		{256, 512, 1024, 2048},
 		{0, 0, 0, 0}
 	};
+	//board B = {
+	//	{0, 0, 0, 0},
+	//	{0, 0, 0, 0},
+	//	{0, 0, 0, 0},
+	//	{0, 0, 0, 0}
+	//};
 
 	std::mt19937 eng{ std::random_device{} () };
 	std::uniform_int_distribution<int> dis{ 0, size * size - 1 };
