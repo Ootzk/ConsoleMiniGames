@@ -9,6 +9,9 @@ enum class SCREEN
 
 	GAME2048,
 
+	GAMECLEAR,
+	GAMEOVER,
+
 	EXIT
 };
 

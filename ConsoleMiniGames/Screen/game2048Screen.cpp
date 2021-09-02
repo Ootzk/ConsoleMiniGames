@@ -33,6 +33,8 @@ std::optional<SCREEN> Game2048Screen::_input()
 		B.shift(DIRECTION::LEFT); return std::nullopt;
 	case KEY::RIGHT:
 		B.shift(DIRECTION::RIGHT); return std::nullopt;
+	case KEY::PAUSE:
+		return SCREEN::EXIT;
 	default: return std::nullopt;
 	}
 }
@@ -42,9 +44,9 @@ void Game2048Screen::_draw()
 	moveCursor();
 	_draw(B);
 	moveCursor({ 23, 40 });
-	std::cout << B.movements();
+	std::cout << B.get_movements();
 	moveCursor({ 36, 40 });
-	std::cout << B.maxblock();
+	std::cout << B.get_maxblock();
 }
 
 std::optional<SCREEN> Game2048Screen::_update()
@@ -52,6 +54,8 @@ std::optional<SCREEN> Game2048Screen::_update()
 	std::optional<SCREEN> maybe = _input();
 	_draw();
 	_wait();
+	if (B.get_maxblock() == 2048) return SCREEN::GAMECLEAR;
+	if (B.is_gameover())          return SCREEN::GAMEOVER;
 
 	return maybe;
 }

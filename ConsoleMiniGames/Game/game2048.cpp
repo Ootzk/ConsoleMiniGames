@@ -13,8 +13,11 @@ void Board2048::clear()
 		{0, 0, 0, 0}
 	};
 	generate_random_block(3);
-	movements_ = 0;
-	maxblock_ = 2;
+
+	gameover = false;
+	stat_movements  = 0;
+	stat_maxblock   = 0;
+	stat_zeroblocks = 0;
 }
 
 
@@ -34,9 +37,26 @@ void Board2048::generate_random_block(int num_blocks)
 	}
 }
 
+void Board2048::update()
+{
+	stat_movements++;
+	stat_zeroblocks = 0;
+	for (intP y = 0; y < size_; ++y) {
+		for (intP x = 0; x < size_; ++x) {
+			intP num = B[y][x];
+			if (num == 0) stat_zeroblocks++;
+			stat_maxblock = std::max(stat_maxblock, num);
+		}
+	}
+	if (stat_zeroblocks == 0) {
+		gameover = true;
+		return;
+	}
+	generate_random_block();
+}
+
 
 void Board2048::shift(const DIRECTION& dir) {
-	movements_++;
 	for (intP i1 = 0; i1 < size_; ++i1) {
 		for (intP w = 0; w < size_; ++w) {
 			intP x1 = 0, y1 = 0;
@@ -101,12 +121,7 @@ void Board2048::shift(const DIRECTION& dir) {
 			}
 		}
 	}
-	generate_random_block();
-	for (intP y = 0; y < size_; ++y) {
-		for (intP x = 0; x < size_; ++x) {
-			maxblock_ = std::max(maxblock_, B[y][x]);
-		}
-	}
+	update();
 }
 
 intP Board2048::at(intP x, intP y) const
@@ -120,12 +135,18 @@ intP Board2048::size() const
 	return size_;
 }
 
-intP Board2048::movements()
+intP Board2048::get_movements() const
 {
-	return movements_;
+	return stat_movements;
 }
 
-intP Board2048::maxblock()
+intP Board2048::get_maxblock() const
 {
-	return maxblock_;
+	return stat_maxblock;
+}
+
+bool Board2048::is_gameover() const
+{
+	if (gameover) return true;
+	else return false;
 }
