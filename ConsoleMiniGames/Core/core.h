@@ -62,24 +62,29 @@ KEY getKEY();
 
 enum class COLOR
 {
-	BLACK,
-	BLUE,
-	GREEN,
-	CYAN,
-	RED,
-	PURPLE,
-	BROWN,
-	LIGHTGRAY,
-	DARKGRAY,
-	LIGHTBLUE,
-	LIGHTGREEN,
-	LIGHTCYAN,
-	LIGHTRED,
-	LIGHTPURPLE,
-	YELLOW,
-	WHITE
+	BLACK,       // 'X' (fill all)
+	BLUE,        // 'B'
+	GREEN,       // 'G'
+	CYAN,        // 'C'
+	RED,         // 'R'
+	PURPLE,      // 'P'
+	BROWN,       // 'O' (oak)
+	LIGHTGRAY,   // 'a' (ash)
+	DARKGRAY,    // 'A'
+	LIGHTBLUE,   // 'b'
+	LIGHTGREEN,  // 'g'
+	LIGHTCYAN,   // 'c'
+	LIGHTRED,    // 'r'
+	LIGHTPURPLE, // 'p'
+	YELLOW,      // 'Y'
+	WHITE,       // 'W'
+
+	DEFAULT      // ' ' (WHITE in foreground, BLACK in background)
 };
+COLOR char2COLOR(char c);
+
 void setPalette(COLOR foreground = COLOR::WHITE, COLOR background = COLOR::BLACK);
+void setPalette(int colorCode);
 
 enum class DIRECTION
 {
@@ -88,3 +93,5 @@ enum class DIRECTION
 	UP,
 	DOWN
 };
+
+void draw(std::ifstream& text, std::ifstream& font, std::ifstream& back);

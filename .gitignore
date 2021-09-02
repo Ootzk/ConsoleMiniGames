@@ -353,3 +353,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/ConsoleMiniGames/Main/back.txt
+/ConsoleMiniGames/Main/font.txt
+/ConsoleMiniGames/Main/text.txt
