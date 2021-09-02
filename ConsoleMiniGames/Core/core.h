@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <cassert>
 #include <chrono>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <iterator>
@@ -96,7 +97,7 @@ private:
 
 public:
 	WallPaper(const std::string& textfile, const std::string& fontfile, const std::string& backfile);
-	void draw();
+	void draw(const Coordinate& offset = { 0, 0 });
 };
 
 enum class DIRECTION
@@ -106,5 +107,3 @@ enum class DIRECTION
 	UP,
 	DOWN
 };
-
-void draw(std::ifstream&& text, std::ifstream&& font, std::ifstream&& back);

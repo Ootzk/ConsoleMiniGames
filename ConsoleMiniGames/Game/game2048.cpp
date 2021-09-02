@@ -70,12 +70,19 @@ void Board2048::shift(const DIRECTION& dir) {
 
 void draw(Board2048& B)
 {
+	intP s = 8, e = 2;
+	std::unordered_map<intP, WallPaper> sprites = {
+		{0, {"../Game/num_0_text.txt", "../Game/num_0_font.txt", "../Game/num_0_back.txt"}},
+		{2, {"../Game/num_2_text.txt", "../Game/num_2_font.txt", "../Game/num_2_back.txt"}},
+		{4, {"../Game/num_4_text.txt", "../Game/num_4_font.txt", "../Game/num_4_back.txt"}}
+	};
+	
 	if (not B.drawed_after_change) {
 		for (intP y = 0; y < B.size; ++y) {
 			for (intP x = 0; x < B.size; ++x) {
-				std::cout << std::setfill(' ') << std::setw(5) << B.B[y][x];
+				intP num = B.B[y][x];
+				sprites.find(num)->second.draw({ (s + e) * x, (s + e) * y });
 			}
-			std::cout << endl;
 		}
 	}
 	B.drawed_after_change = true;

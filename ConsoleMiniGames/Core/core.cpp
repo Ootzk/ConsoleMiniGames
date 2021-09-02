@@ -115,29 +115,35 @@ COLOR WallPaper::char2COLOR(char c)
 	}
 }
 
-void WallPaper::draw()
+void WallPaper::draw(const Coordinate& offset)
 {
-	std::ifstream text(textfile);
-	std::ifstream font(fontfile);
-	std::ifstream back(backfile);
+	std::ifstream text(textfile, std::fstream::in);
+	std::ifstream font(fontfile, std::fstream::in);
+	std::ifstream back(backfile, std::fstream::in);
 
+	moveCursor(offset);
 	if (text.is_open() and font.is_open() and back.is_open()) {
 		char T, F, B, f = ' ', b = ' ';
 		while (not text.eof() and not font.eof() and not back.eof()) {
 			text.get(T); font.get(F); back.get(B);
-			if (f != F or b != B) {
-				if (T == ' ' and b == B) {
-					std::cout << T;
-					b = B;
-				}
-				else {
-					setPalette(char2COLOR(F), char2COLOR(B));
-					std::cout << T;
-					f = F; b = B;
-				}
+			if (T == endl and F == endl and B == endl) {
+				moveCursor({ offset.x, getCursorLocation().y + 1 });
 			}
 			else {
-				std::cout << T;
+				if (f != F or b != B) {
+					if (T == ' ' and b == B) {
+						std::cout << T;
+						b = B;
+					}
+					else {
+						setPalette(char2COLOR(F), char2COLOR(B));
+						std::cout << T;
+						f = F; b = B;
+					}
+				}
+				else {
+					std::cout << T;
+				}
 			}
 		}
 		setPalette();
