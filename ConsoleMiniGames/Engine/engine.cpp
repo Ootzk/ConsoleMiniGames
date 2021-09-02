@@ -25,6 +25,7 @@ void Engine::run()
 		case SCREEN::GAMESELECT:     screen = gameSelectionScreen->loop(); break;
 		case SCREEN::CREDIT:         screen = creditScreen->loop(); break;
 		case SCREEN::GAME2048:       screen = game2048Screen->loop(); break;
+		case SCREEN::GAMEOVER:       screen = gameOverScreen->loop(); break;
 
 		case SCREEN::EXIT: return;
 		}

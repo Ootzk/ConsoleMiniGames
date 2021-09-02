@@ -7,7 +7,7 @@ void GameOverScreen::_init()
 
     moveCursor(current->second);
     setPalette(COLOR::LIGHTRED, COLOR::BLACK);
-    std::cout << ">";
+	std::cout << ">";
 }
 
 std::optional<SCREEN> GameOverScreen::_input()
