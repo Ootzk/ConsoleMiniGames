@@ -7,10 +7,16 @@ class GameSelectionScreen : public Screen
 	using Cursor = Choices::const_iterator;
 
 private:
+	WallPaper wallpaper = {
+		"../Screen/gameSelectionScreen_text.txt",
+		"../Screen/gameSelectionScreen_font.txt",
+		"../Screen/gameSelectionScreen_back.txt",
+	};
+
 	Choices choices = {
-		{SCREEN::GAME2048, Coordinate{14, 8}},
-		{SCREEN::MAIN,     Coordinate{14, 26}},
-		{SCREEN::EXIT,     Coordinate{14, 27}}
+		{SCREEN::GAME2048, Coordinate{12, 10}},
+		{SCREEN::MAIN,     Coordinate{12, 36}},
+		{SCREEN::EXIT,     Coordinate{12, 37}}
 	};
 	Cursor current = choices.cbegin();
 	Cursor previous = choices.cbegin();

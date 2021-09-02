@@ -3,33 +3,14 @@
 void CreditScreen::_init()
 {
 	_clear();
+    wallpaper.draw();
 
-	moveCursor();
-	setPalette();
+    moveCursor({ 17, 21 });
+    setPalette(COLOR::WHITE, COLOR::LIGHTRED);
+    std::cout << VERSION;
 
-    std::cout << "\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                Console Mini Games                             \n\
-                                on windows console                             \n\
-                                                                               \n\
-                        maker: Ootzk(blitz555@dgist.ac.kr)                     \n\
-                        version: ";
-    std::cout << VERSION << "                                     \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                            > back to main screen                              \n";
+    moveCursor();
+    setPalette();
 }
 
 std::optional<SCREEN> CreditScreen::_input()

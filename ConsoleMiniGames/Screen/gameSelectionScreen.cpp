@@ -3,41 +3,7 @@
 void GameSelectionScreen::_init()
 {
 	_clear();
-
-	moveCursor();
-	setPalette(COLOR::LIGHTGRAY, COLOR::BLACK);
-	std::cout << "\
-   #####                                        #####                          \n\
-  #     # ###### #      ######  ####  #####    #     #   ##   #    # ######    \n\
-  #       #      #      #      #    #   #      #        #  #  ##  ## #         \n\
-   #####  #####  #      #####  #        #      #  #### #    # # ## # #####     \n\
-        # #      #      #      #        #      #     # ###### #    # #         \n\
-  #     # #      #      #      #    #   #      #     # #    # #    # #         \n\
-   #####  ###### ###### ######  ####    #       #####  #    # #    # ######    \n";
-
-	setPalette();
-	std::cout << "\
-                                                                               \n\
-                                       2048                                    \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                                                                               \n\
-                               return to main screen                           \n\
-                                     exit game                                 \n";
+    wallpaper.draw();
 
     moveCursor(current->second);
     std::cout << ">";

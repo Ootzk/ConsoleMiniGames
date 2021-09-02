@@ -3,6 +3,12 @@
 
 class CreditScreen : public Screen
 {
+	WallPaper wallpaper = {
+		"../Screen/creditScreen_text.txt",
+		"../Screen/creditScreen_font.txt",
+		"../Screen/creditScreen_back.txt"
+	};
+
 protected:
 	void _init() override;
 	std::optional<SCREEN> _input() override;

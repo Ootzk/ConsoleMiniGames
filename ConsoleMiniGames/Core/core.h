@@ -22,7 +22,7 @@ const double VERSION = 1.1;
 const char endl = '\n';
 
 const int WINDOW_WIDTH = 79;
-const int WINDOW_HEIGHT = 43;
+const int WINDOW_HEIGHT = 42;
 const int FPS = 60;
 
 //alias
@@ -81,10 +81,23 @@ enum class COLOR
 
 	DEFAULT      // ' ' (WHITE in foreground, BLACK in background)
 };
-COLOR char2COLOR(char c);
 
 void setPalette(COLOR foreground = COLOR::WHITE, COLOR background = COLOR::BLACK);
-void setPalette(int colorCode);
+
+class WallPaper
+{
+private:
+	std::string textfile;
+	std::string fontfile;
+	std::string backfile;
+
+private:
+	static COLOR char2COLOR(char c);
+
+public:
+	WallPaper(const std::string& textfile, const std::string& fontfile, const std::string& backfile);
+	void draw();
+};
 
 enum class DIRECTION
 {
@@ -94,4 +107,4 @@ enum class DIRECTION
 	DOWN
 };
 
-void draw(std::ifstream& text, std::ifstream& font, std::ifstream& back);
+void draw(std::ifstream&& text, std::ifstream&& font, std::ifstream&& back);

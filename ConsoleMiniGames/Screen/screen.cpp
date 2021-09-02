@@ -1,3 +1,4 @@
+#include "..\Core\core.h"
 #include "screen.h"
 
 Screen::~Screen()
