@@ -1,6 +1,9 @@
 #pragma once
 #include <conio.h>
 #include <Windows.h>
+#undef max
+#undef min
+#include <algorithm>
 #include <cassert>
 #include <chrono>
 #include <functional>
