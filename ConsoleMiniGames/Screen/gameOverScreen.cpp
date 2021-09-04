@@ -1,21 +1,29 @@
 #include "gameOverScreen.h"
 
-void GameOverScreen::_init()
+void GameOverScreen::_init(const MESSAGE& msg)
 {
 	_clear();
 	wallpaper.draw();
 
-    moveCursor(current->second);
     setPalette(COLOR::LIGHTRED, COLOR::BLACK);
+    moveCursor({ 12, 27 });
+    for (intP i = 0; i < msg.msg.size(); ++i) {
+        std::cout << msg.msg[i];
+        Coordinate coord = getCursorLocation();
+        moveCursor({ 12, coord.y + 1 });
+    }
+
+    setPalette(COLOR::LIGHTRED, COLOR::BLACK);
+    moveCursor(current->second);
 	std::cout << ">";
 }
 
-std::optional<SCREEN> GameOverScreen::_input()
+std::optional<MESSAGE> GameOverScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
     {
-    case KEY::SELECT: return current->first;
+    case KEY::SELECT: return MESSAGE{ SCREEN::GAMEOVER, current->first, {} };
     case KEY::UP: {
         previous = current;
 
@@ -45,9 +53,9 @@ void GameOverScreen::_draw()
     }
 }
 
-std::optional<SCREEN> GameOverScreen::_update()
+std::optional<MESSAGE> GameOverScreen::_update()
 {
-    std::optional<SCREEN> maybe = _input();
+    std::optional<MESSAGE> maybe = _input();
     _draw();
     _wait();
 
@@ -60,11 +68,11 @@ void GameOverScreen::_exit()
     current = choices.cbegin();
 }
 
-SCREEN GameOverScreen::loop()
+MESSAGE GameOverScreen::loop(const MESSAGE& msg)
 {
-    _init();
+    _init(msg);
 
-    std::optional<SCREEN> maybe = std::nullopt;
+    std::optional<MESSAGE> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }

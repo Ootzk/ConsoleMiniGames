@@ -1,21 +1,29 @@
 #include "gameClearScreen.h"
 
-void GameClearScreen::_init()
+void GameClearScreen::_init(const MESSAGE& msg)
 {
 	_clear();
 	wallpaper.draw();
 
+    setPalette(COLOR::YELLOW, COLOR::BLACK);
+    moveCursor({ 12, 27 });
+    for (intP i = 0; i < msg.msg.size(); ++i) {
+        std::cout << msg.msg[i];
+        Coordinate coord = getCursorLocation();
+        moveCursor({ 12, coord.y + 1 });
+    }
+
+    setPalette(COLOR::YELLOW, COLOR::BLACK);
 	moveCursor(current->second);
-	setPalette(COLOR::YELLOW, COLOR::BLACK);
 	std::cout << ">";
 }
 
-std::optional<SCREEN> GameClearScreen::_input()
+std::optional<MESSAGE> GameClearScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
     {
-    case KEY::SELECT: return current->first;
+    case KEY::SELECT: return MESSAGE{ SCREEN::GAMECLEAR, current->first,  {} };
     case KEY::UP: {
         previous = current;
 
@@ -45,9 +53,9 @@ void GameClearScreen::_draw()
     }
 }
 
-std::optional<SCREEN> GameClearScreen::_update()
+std::optional<MESSAGE> GameClearScreen::_update()
 {
-    std::optional<SCREEN> maybe = _input();
+    std::optional<MESSAGE> maybe = _input();
     _draw();
     _wait();
 
@@ -60,11 +68,11 @@ void GameClearScreen::_exit()
     current = choices.cbegin();
 }
 
-SCREEN GameClearScreen::loop()
+MESSAGE GameClearScreen::loop(const MESSAGE& msg)
 {
-    _init();
+    _init(msg);
 
-    std::optional<SCREEN> maybe = std::nullopt;
+    std::optional<MESSAGE> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }

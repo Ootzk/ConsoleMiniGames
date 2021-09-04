@@ -86,12 +86,12 @@ void setPalette(COLOR foreground, COLOR background)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorCode);
 }
 
-WallPaper::WallPaper(const std::string& textfile, const std::string& fontfile, const std::string& backfile)
+WALLPAPER::WALLPAPER(const std::string& textfile, const std::string& fontfile, const std::string& backfile)
 	: textfile(textfile), fontfile(fontfile), backfile(backfile)
 {
 }
 
-COLOR WallPaper::char2COLOR(char c)
+COLOR WALLPAPER::char2COLOR(char c)
 {
 	switch (c)
 	{
@@ -115,7 +115,7 @@ COLOR WallPaper::char2COLOR(char c)
 	}
 }
 
-void WallPaper::draw(const Coordinate& offset)
+void WALLPAPER::draw(const Coordinate& offset)
 {
 	std::ifstream text(textfile, std::fstream::in);
 	std::ifstream font(fontfile, std::fstream::in);

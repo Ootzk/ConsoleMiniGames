@@ -3,19 +3,21 @@
 
 class CreditScreen : public Screen
 {
-	WallPaper wallpaper = {
+private:
+	SCREEN type = SCREEN::CREDIT;
+	WALLPAPER wallpaper = {
 		"../Screen/creditScreen_text.txt",
 		"../Screen/creditScreen_font.txt",
 		"../Screen/creditScreen_back.txt"
 	};
 
 protected:
-	void _init() override;
-	std::optional<SCREEN> _input() override;
+	void _init(const MESSAGE& msg) override;
+	std::optional<MESSAGE> _input() override;
 	void _draw() override;
-	std::optional<SCREEN> _update() override;
+	std::optional<MESSAGE> _update() override;
 	void _exit() override;
 
 public:
-	SCREEN loop() override;
+	MESSAGE loop(const MESSAGE& msg) override;
 };

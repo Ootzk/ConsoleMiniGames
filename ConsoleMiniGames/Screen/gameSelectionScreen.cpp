@@ -1,6 +1,6 @@
 #include "gameSelectionScreen.h"
 
-void GameSelectionScreen::_init()
+void GameSelectionScreen::_init(const MESSAGE& msg)
 {
 	_clear();
     wallpaper.draw();
@@ -9,12 +9,12 @@ void GameSelectionScreen::_init()
     std::cout << ">";
 }
 
-std::optional<SCREEN> GameSelectionScreen::_input()
+std::optional<MESSAGE> GameSelectionScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
     {
-    case KEY::SELECT: return current->first;
+    case KEY::SELECT: return MESSAGE{ SCREEN::GAMESELECT, current->first, {} };
     case KEY::UP: {
         previous = current;
 
@@ -45,9 +45,9 @@ void GameSelectionScreen::_draw()
     }
 }
 
-std::optional<SCREEN> GameSelectionScreen::_update()
+std::optional<MESSAGE> GameSelectionScreen::_update()
 {
-    std::optional<SCREEN> maybe = _input();
+    std::optional<MESSAGE> maybe = _input();
     _draw();
     _wait();
 
@@ -60,11 +60,11 @@ void GameSelectionScreen::_exit()
     current = choices.cbegin();
 }
 
-SCREEN GameSelectionScreen::loop()
+MESSAGE GameSelectionScreen::loop(const MESSAGE& msg)
 {
-    _init();
+    _init(msg);
 
-    std::optional<SCREEN> maybe = std::nullopt;
+    std::optional<MESSAGE> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }

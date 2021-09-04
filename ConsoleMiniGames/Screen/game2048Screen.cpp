@@ -10,7 +10,7 @@ void Game2048Screen::_draw(const Board2048& B)
 	}
 }
 
-void Game2048Screen::_init()
+void Game2048Screen::_init(const MESSAGE& msg)
 {
 	_clear();
 	wallpaper.draw();
@@ -20,7 +20,7 @@ void Game2048Screen::_init()
 	_draw(B);
 }
 
-std::optional<SCREEN> Game2048Screen::_input()
+std::optional<MESSAGE> Game2048Screen::_input()
 {
 	KEY key = getKEY();
 	switch (key)
@@ -33,8 +33,6 @@ std::optional<SCREEN> Game2048Screen::_input()
 		B.shift(DIRECTION::LEFT); return std::nullopt;
 	case KEY::RIGHT:
 		B.shift(DIRECTION::RIGHT); return std::nullopt;
-	case KEY::PAUSE:
-		return SCREEN::EXIT;
 	default: return std::nullopt;
 	}
 }
@@ -49,13 +47,15 @@ void Game2048Screen::_draw()
 	std::cout << B.get_maxblock();
 }
 
-std::optional<SCREEN> Game2048Screen::_update()
+std::optional<MESSAGE> Game2048Screen::_update()
 {
-	std::optional<SCREEN> maybe = _input();
+	std::optional<MESSAGE> maybe = _input();
 	_draw();
 	_wait();
-	if (B.get_maxblock() == 2048) return SCREEN::GAMECLEAR;
-	if (B.is_gameover())          return SCREEN::GAMEOVER;
+	if (B.get_maxblock() == 2048) return MESSAGE{ type, SCREEN::GAMECLEAR,
+		{ "Game             : 2048", "Score (max block): " + std::to_string(B.get_maxblock()), "Trial (movements): " + std::to_string(B.get_movements())}};
+	if (B.is_gameover())          return MESSAGE{ type, SCREEN::GAMEOVER, 
+		{ "Game             : 2048", "Score (max block): " + std::to_string(B.get_maxblock()), "Trial (movements): " + std::to_string(B.get_movements())}};
 
 	return maybe;
 }
@@ -65,11 +65,11 @@ void Game2048Screen::_exit()
 	B.clear();
 }
 
-SCREEN Game2048Screen::loop()
+MESSAGE Game2048Screen::loop(const MESSAGE& msg)
 {
-	_init();
+	_init(msg);
 
-	std::optional<SCREEN> maybe = std::nullopt;
+	std::optional<MESSAGE> maybe = std::nullopt;
 	while (!maybe.has_value()) {
 		maybe = _update();
 	}

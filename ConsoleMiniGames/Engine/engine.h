@@ -15,7 +15,7 @@ private:
 	void _init();
 
 private:
-	SCREEN screen = SCREEN::MAIN;
+	MESSAGE msg = { SCREEN::EXIT, SCREEN::MAIN, {} };
 
 public:
 	void run();

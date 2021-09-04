@@ -88,7 +88,7 @@ enum class COLOR
 
 void setPalette(COLOR foreground = COLOR::WHITE, COLOR background = COLOR::BLACK);
 
-class WallPaper
+class WALLPAPER
 {
 private:
 	std::string textfile;
@@ -99,7 +99,7 @@ private:
 	static COLOR char2COLOR(char c);
 
 public:
-	WallPaper(const std::string& textfile, const std::string& fontfile, const std::string& backfile);
+	WALLPAPER(const std::string& textfile, const std::string& fontfile, const std::string& backfile);
 	void draw(const Coordinate& offset = { 0, 0 });
 };
 

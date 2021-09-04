@@ -5,12 +5,13 @@
 class Game2048Screen : public Screen
 {
 private:
-	WallPaper wallpaper = {
+	SCREEN type = SCREEN::GAME2048;
+	WALLPAPER wallpaper = {
 		"../Screen/game2048Screen_text.txt",
 		"../Screen/game2048Screen_font.txt",
 		"../Screen/game2048Screen_back.txt",
 	};
-	std::unordered_map<intP, WallPaper> sprites = {
+	std::unordered_map<intP, WALLPAPER> sprites = {
 		{0,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_0_back.txt"}},
 		{2,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_2_back.txt"}},
 		{4,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_4_back.txt"}},
@@ -30,14 +31,13 @@ private:
 private:
 	void _draw(const Board2048& B);
 
-
 protected:
-	void _init() override;
-	std::optional<SCREEN> _input() override;
+	void _init(const MESSAGE& msg) override;
+	std::optional<MESSAGE> _input() override;
 	void _draw() override;
-	std::optional<SCREEN> _update() override;
+	std::optional<MESSAGE> _update() override;
 	void _exit() override;
 
 public:
-	SCREEN loop() override;
+	MESSAGE loop(const MESSAGE& msg) override;
 };

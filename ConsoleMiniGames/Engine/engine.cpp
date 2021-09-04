@@ -19,14 +19,14 @@ void Engine::run()
 	_init();
 
 	while (true) {
-		switch (screen)
+		switch (msg.to)
 		{
-		case SCREEN::MAIN:           screen = mainScreen->loop(); break;
-		case SCREEN::GAMESELECT:     screen = gameSelectionScreen->loop(); break;
-		case SCREEN::CREDIT:         screen = creditScreen->loop(); break;
-		case SCREEN::GAME2048:       screen = game2048Screen->loop(); break;
-		case SCREEN::GAMEOVER:       screen = gameOverScreen->loop(); break;
-		case SCREEN::GAMECLEAR:      screen = gameClearScreen->loop(); break;
+		case SCREEN::MAIN:           msg = mainScreen->loop(msg);			break;
+		case SCREEN::GAMESELECT:     msg = gameSelectionScreen->loop(msg);	break;
+		case SCREEN::CREDIT:         msg = creditScreen->loop(msg);			break;
+		case SCREEN::GAME2048:       msg = game2048Screen->loop(msg);		break;
+		case SCREEN::GAMEOVER:       msg = gameOverScreen->loop(msg);		break;
+		case SCREEN::GAMECLEAR:      msg = gameClearScreen->loop(msg);		break;
 
 		case SCREEN::EXIT: return;
 		}

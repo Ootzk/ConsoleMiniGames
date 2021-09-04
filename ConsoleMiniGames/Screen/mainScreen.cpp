@@ -1,6 +1,6 @@
 #include "mainScreen.h"
 
-void MainScreen::_init()
+void MainScreen::_init(const MESSAGE& msg)
 {
     _clear();
     wallpaper.draw();
@@ -9,12 +9,12 @@ void MainScreen::_init()
     std::cout << ">";
 }
 
-std::optional<SCREEN> MainScreen::_input()
+std::optional<MESSAGE> MainScreen::_input()
 {
     KEY key = getKEY();
     switch (key)
     {
-    case KEY::SELECT: return current->first;
+    case KEY::SELECT: return MESSAGE{ type, current->first, {} };
     case KEY::UP: {
         previous = current;
 
@@ -44,9 +44,9 @@ void MainScreen::_draw()
     }
 }
 
-std::optional<SCREEN> MainScreen::_update()
+std::optional<MESSAGE> MainScreen::_update()
 {
-    std::optional<SCREEN> maybe = _input();
+    std::optional<MESSAGE> maybe = _input();
     _draw();
     _wait();
 
@@ -59,11 +59,11 @@ void MainScreen::_exit()
     current = choices.cbegin();
 }
 
-SCREEN MainScreen::loop()
+MESSAGE MainScreen::loop(const MESSAGE& msg)
 {
-    _init();
+    _init(msg);
 
-    std::optional<SCREEN> maybe = std::nullopt;
+    std::optional<MESSAGE> maybe = std::nullopt;
     while (!maybe.has_value()) {
         maybe = _update();
     }
