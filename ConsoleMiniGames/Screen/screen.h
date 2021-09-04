@@ -12,6 +12,8 @@ enum class SCREEN
 	GAMECLEAR,
 	GAMEOVER,
 
+	PAUSE,
+
 	EXIT
 };
 

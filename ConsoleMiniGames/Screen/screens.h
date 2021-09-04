@@ -6,3 +6,4 @@
 #include "game2048Screen.h"
 #include "gameOverScreen.h"
 #include "gameClearScreen.h"
+#include "pauseScreen.h"

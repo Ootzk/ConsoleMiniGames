@@ -27,6 +27,7 @@ void Engine::run()
 		case SCREEN::GAME2048:       msg = game2048Screen->loop(msg);		break;
 		case SCREEN::GAMEOVER:       msg = gameOverScreen->loop(msg);		break;
 		case SCREEN::GAMECLEAR:      msg = gameClearScreen->loop(msg);		break;
+		case SCREEN::PAUSE:          msg = pauseScreen->loop(msg);          break;
 
 		case SCREEN::EXIT: return;
 		}

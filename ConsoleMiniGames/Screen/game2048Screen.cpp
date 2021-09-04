@@ -33,6 +33,8 @@ std::optional<MESSAGE> Game2048Screen::_input()
 		B.shift(DIRECTION::LEFT); return std::nullopt;
 	case KEY::RIGHT:
 		B.shift(DIRECTION::RIGHT); return std::nullopt;
+	case KEY::PAUSE:              
+		return MESSAGE{ type, SCREEN::PAUSE, {} };
 	default: return std::nullopt;
 	}
 }
@@ -74,7 +76,9 @@ MESSAGE Game2048Screen::loop(const MESSAGE& msg)
 		maybe = _update();
 	}
 
-	_exit();
+	if (maybe.value().to != SCREEN::PAUSE) {
+		_exit();
+	}
 
 	return maybe.value();
 }
