@@ -1,7 +1,12 @@
 #include "game2048.h"
 
-Board2048::Board2048() {
-	generate_random_block(3);
+Board2048::Board2048() 
+{
+}
+
+Board2048::Board2048(board b)
+	:B(b)
+{
 }
 
 void Board2048::clear()
@@ -12,53 +17,13 @@ void Board2048::clear()
 		{0, 0, 0, 0},
 		{0, 0, 0, 0}
 	};
-	generate_random_block(3);
-
-	gameover = false;
-	stat_movements  = 0;
-	stat_maxblock   = 0;
-	stat_zeroblocks = 0;
 }
 
 
-void Board2048::generate_random_block(int num_blocks)
-{
-	intP x = 0, y = 0;
-	for (intP r = 0; r < num_blocks; ++r) {
-		bool generated = false;
-		while (not generated) {
-			intP rand_idx = dis(eng);
-			y = rand_idx / size_, x = rand_idx % size_;
-			if (B[y][x] == 0) {
-				B[y][x] = 2;
-				generated = true;
-			}
-		}
-	}
-}
-
-void Board2048::update()
-{
-	stat_movements++;
-	stat_zeroblocks = 0;
-	for (intP y = 0; y < size_; ++y) {
-		for (intP x = 0; x < size_; ++x) {
-			intP num = B[y][x];
-			if (num == 0) stat_zeroblocks++;
-			stat_maxblock = std::max(stat_maxblock, num);
-		}
-	}
-	if (stat_zeroblocks == 0) {
-		gameover = true;
-		return;
-	}
-	generate_random_block();
-}
-
-
-void Board2048::shift(const DIRECTION& dir) {
-	for (intP i1 = 0; i1 < size_; ++i1) {
-		for (intP w = 0; w < size_; ++w) {
+std::pair<std::vector<intP>, intP> Board2048::shift(const DIRECTION& dir) {
+	// generalized shift
+	for (intP i1 = 0; i1 < size; ++i1) {
+		for (intP w = 0; w < size; ++w) {
 			intP x1 = 0, y1 = 0;
 			switch (dir)
 			{
@@ -67,7 +32,7 @@ void Board2048::shift(const DIRECTION& dir) {
 				y1 = i1;
 				break;
 			case DIRECTION::RIGHT:
-				x1 = size_ - 1 - w;
+				x1 = size - 1 - w;
 				y1 = i1;
 				break;
 			case DIRECTION::UP:
@@ -76,13 +41,13 @@ void Board2048::shift(const DIRECTION& dir) {
 				break;
 			case DIRECTION::DOWN:
 				x1 = i1;
-				y1 = size_ - 1 - w;
+				y1 = size - 1 - w;
 				break;
 			default:
 				break;
 			}
 			intP& write = B[y1][x1];
-			for (intP i2 = w + 1; i2 < size_; ++i2) {
+			for (intP i2 = w + 1; i2 < size; ++i2) {
 				intP x2 = 0, y2 = 0;
 				switch (dir)
 				{
@@ -91,7 +56,7 @@ void Board2048::shift(const DIRECTION& dir) {
 					y2 = i1;
 					break;
 				case DIRECTION::RIGHT:
-					x2 = size_ - 1 - i2;
+					x2 = size - 1 - i2;
 					y2 = i1;
 					break;
 				case DIRECTION::UP:
@@ -100,7 +65,7 @@ void Board2048::shift(const DIRECTION& dir) {
 					break;
 				case DIRECTION::DOWN:
 					x2 = i1;
-					y2 = size_ - 1 - i2;
+					y2 = size - 1 - i2;
 					break;
 				default:
 					break;
@@ -121,7 +86,18 @@ void Board2048::shift(const DIRECTION& dir) {
 			}
 		}
 	}
-	update();
+
+	// update statistics
+	std::vector<intP> zero_idx;
+	intP max_block = 0;
+	for (intP y = 0; y < size; ++y) {
+		for (intP x = 0; x < size; ++x) {
+			intP num_block = B[y][x];
+			max_block = std::max(max_block, num_block);
+			if (num_block == 0) zero_idx.emplace_back(y * size + x);
+		}
+	}
+	return { zero_idx, max_block };
 }
 
 intP Board2048::at(intP x, intP y) const
@@ -130,23 +106,8 @@ intP Board2048::at(intP x, intP y) const
 	return B[y][x];
 }
 
-intP Board2048::size() const
+void Board2048::gen(intP x, intP y, intP v)
 {
-	return size_;
-}
-
-intP Board2048::get_movements() const
-{
-	return stat_movements;
-}
-
-intP Board2048::get_maxblock() const
-{
-	return stat_maxblock;
-}
-
-bool Board2048::is_gameover() const
-{
-	if (gameover) return true;
-	else return false;
+	assert(B[y][x] == 0);
+	B[y][x] = v;
 }

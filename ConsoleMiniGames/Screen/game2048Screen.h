@@ -25,11 +25,23 @@ private:
 		{1024, {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_1024_back.txt"}},
 		{2048, {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_2048_back.txt"}}
 	};
-	Board2048 B;
-	intP board_size = B.size();
+
+	Board2048 B{ {
+		{1024, 1024, 1024, 1024},
+		{0, 0, 0, 0},
+		{0, 0, 0, 0},
+		{0, 0, 0, 0}
+	} };
+
+	std::vector<intP> zero_idx = { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+	intP max_block = 0;
+	intP movements = 0;
+
+	std::mt19937 random_engine{ std::random_device{}() };
 
 private:
 	void _draw(const Board2048& B);
+	bool _gen_random_block(intP num_blocks = 1);
 
 protected:
 	void _init(const MESSAGE& msg) override;
