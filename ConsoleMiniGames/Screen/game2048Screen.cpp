@@ -12,6 +12,10 @@ void Game2048Screen::_draw(const Board2048& B)
 
 void Game2048Screen::_init(const MESSAGE& msg)
 {
+	if (msg.from != SCREEN::PAUSE) {
+		B.clear();
+	}
+
 	_clear();
 	wallpaper.draw();
 
@@ -62,9 +66,11 @@ std::optional<MESSAGE> Game2048Screen::_update()
 	return maybe;
 }
 
-void Game2048Screen::_exit()
+void Game2048Screen::_exit(const MESSAGE& msg)
 {
-	B.clear();
+	if (msg.to != SCREEN::PAUSE) {
+		B.clear();
+	}
 }
 
 MESSAGE Game2048Screen::loop(const MESSAGE& msg)
@@ -76,9 +82,7 @@ MESSAGE Game2048Screen::loop(const MESSAGE& msg)
 		maybe = _update();
 	}
 
-	if (maybe.value().to != SCREEN::PAUSE) {
-		_exit();
-	}
+	_exit(maybe.value());
 
 	return maybe.value();
 }

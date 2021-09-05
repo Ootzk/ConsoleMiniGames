@@ -36,7 +36,7 @@ std::optional<MESSAGE> CreditScreen::_update()
     return maybe;
 }
 
-void CreditScreen::_exit()
+void CreditScreen::_exit(const MESSAGE& msg)
 {
 }
 
@@ -49,7 +49,7 @@ MESSAGE CreditScreen::loop(const MESSAGE& msg)
         maybe = _update();
     }
 
-    _exit();
+    _exit(maybe.value());
 
     return maybe.value();
 }

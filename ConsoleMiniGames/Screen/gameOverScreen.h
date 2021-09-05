@@ -23,7 +23,7 @@ protected:
 	std::optional<MESSAGE> _input() override;
 	void _draw() override;
 	std::optional<MESSAGE> _update() override;
-	void _exit() override;
+	void _exit(const MESSAGE& msg) override;
 
 public:
 	MESSAGE loop(const MESSAGE& msg) override;

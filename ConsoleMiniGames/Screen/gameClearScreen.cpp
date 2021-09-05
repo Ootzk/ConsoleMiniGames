@@ -62,10 +62,10 @@ std::optional<MESSAGE> GameClearScreen::_update()
     return maybe;
 }
 
-void GameClearScreen::_exit()
+void GameClearScreen::_exit(const MESSAGE& msg)
 {
-    previous = choices.cbegin();
     current = choices.cbegin();
+    previous = choices.cbegin();
 }
 
 MESSAGE GameClearScreen::loop(const MESSAGE& msg)
@@ -77,7 +77,7 @@ MESSAGE GameClearScreen::loop(const MESSAGE& msg)
         maybe = _update();
     }
 
-    _exit();
+    _exit(maybe.value());
 
     return maybe.value();
 }

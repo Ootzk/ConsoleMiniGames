@@ -56,7 +56,7 @@ std::optional<MESSAGE> PauseScreen::_update()
     return maybe;
 }
 
-void PauseScreen::_exit()
+void PauseScreen::_exit(const MESSAGE& msg)
 {
     choices.clear();
     choices.insert({ SCREEN::MAIN,  Coordinate{15, 33} });
@@ -73,7 +73,7 @@ MESSAGE PauseScreen::loop(const MESSAGE& msg)
         maybe = _update();
     }
 
-    _exit();
+    _exit(maybe.value());
 
     return maybe.value();
 }

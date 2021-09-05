@@ -53,10 +53,10 @@ std::optional<MESSAGE> MainScreen::_update()
     return maybe;
 }
 
-void MainScreen::_exit()
+void MainScreen::_exit(const MESSAGE& msg)
 {
-    previous = choices.cbegin();
     current = choices.cbegin();
+    previous = choices.cbegin();
 }
 
 MESSAGE MainScreen::loop(const MESSAGE& msg)
@@ -68,7 +68,7 @@ MESSAGE MainScreen::loop(const MESSAGE& msg)
         maybe = _update();
     }
 
-    _exit();
+    _exit(maybe.value());
 
     return maybe.value();
 }

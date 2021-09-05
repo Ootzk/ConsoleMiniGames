@@ -38,7 +38,7 @@ protected:
 	virtual std::optional<MESSAGE> _input() = 0;
 	virtual void _draw() = 0;
 	virtual std::optional<MESSAGE> _update() = 0;
-	virtual void _exit() = 0;
+	virtual void _exit(const MESSAGE& msg) = 0;
 
 public:
 	virtual ~Screen();
