@@ -20,6 +20,7 @@ bool Game2048Screen::_gen_random_block(intP num_blocks)
 
 		B.gen(r % B.size, r / B.size);
 	}
+	generated = true;
 }
 
 void Game2048Screen::_init(const MESSAGE& msg)
@@ -41,30 +42,42 @@ std::optional<MESSAGE> Game2048Screen::_input()
 	KEY key = getKEY();
 	switch (key)
 	{
-	case KEY::UP: {
-		movements++;
-		std::tie(zero_idx, max_block) = B.shift(DIRECTION::UP);
-		return std::nullopt;
-	}
-	case KEY::DOWN: {
-		movements++;
-		std::tie(zero_idx, max_block) = B.shift(DIRECTION::DOWN);
-		return std::nullopt;
-	}
-	case KEY::LEFT: {
-		movements++;
-		std::tie(zero_idx, max_block) = B.shift(DIRECTION::LEFT);
-		return std::nullopt;
-	}
-	case KEY::RIGHT: {
-		movements++;
-		std::tie(zero_idx, max_block) = B.shift(DIRECTION::RIGHT);
-		return std::nullopt;
-	}
-	case KEY::PAUSE:              
+	case KEY::UP:
+		{std::tie(zero_idx, max_block) = B.shift(DIRECTION::UP); generated = false; return std::nullopt; }
+	case KEY::DOWN:
+		{std::tie(zero_idx, max_block) = B.shift(DIRECTION::DOWN); generated = false; return std::nullopt; }
+	case KEY::LEFT:
+		{std::tie(zero_idx, max_block) = B.shift(DIRECTION::LEFT); generated = false; return std::nullopt; }
+	case KEY::RIGHT:
+		{std::tie(zero_idx, max_block) = B.shift(DIRECTION::RIGHT); generated = false; return std::nullopt; }
+	case KEY::PAUSE:
 		return MESSAGE{ type, SCREEN::PAUSE, {} };
-	default: return std::nullopt;
+	default:
+		return std::nullopt;
 	}
+
+	if (key == KEY::UP or key == KEY::DOWN or key == KEY::LEFT or key == KEY::RIGHT) {
+		DIRECTION dir;
+		switch (key)
+		{
+		case KEY::UP:
+			dir = DIRECTION::UP; break;
+		case KEY::DOWN:
+			dir = DIRECTION::DOWN; break;
+		case KEY::LEFT:
+			dir = DIRECTION::LEFT; break;
+		case KEY::RIGHT:
+			dir = DIRECTION::RIGHT; break;
+		}
+		std::tie(zero_idx, max_block) = B.shift(dir);
+		movements++;
+		generated = false;
+		return std::nullopt;
+	}
+	else if (key == KEY::PAUSE) {
+		return MESSAGE{ type, SCREEN::PAUSE, {} };
+	}
+	else return std::nullopt;
 }
 
 void Game2048Screen::_draw()
@@ -80,12 +93,19 @@ void Game2048Screen::_draw()
 std::optional<MESSAGE> Game2048Screen::_update()
 {
 	std::optional<MESSAGE> maybe = _input();
+	if (not generated) {
+		movements++;
+		generated = _gen_random_block();
+		if (not generated) {
+			return MESSAGE{ type, SCREEN::GAMEOVER,	{ "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
+		}
+		if (max_block == 2048) {
+			_draw();
+			return MESSAGE{ type, SCREEN::GAMECLEAR, { "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
+		}
+	}
 	_draw();
 	_wait();
-	if (max_block == 2048) return MESSAGE{ type, SCREEN::GAMECLEAR,
-		{ "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
-	if (not _gen_random_block()) return MESSAGE{ type, SCREEN::GAMEOVER,
-		{ "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
 
 	return maybe;
 }
