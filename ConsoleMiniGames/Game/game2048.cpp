@@ -2,6 +2,7 @@
 
 Board2048::Board2048() 
 {
+	clear();
 }
 
 Board2048::Board2048(board b)

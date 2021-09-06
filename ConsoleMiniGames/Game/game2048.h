@@ -6,12 +6,7 @@ class Board2048
 	using board = std::vector<std::vector<intP>>;
 
 private:
-	board B = {
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0}
-	};
+	board B;
 
 public:
 	Board2048();

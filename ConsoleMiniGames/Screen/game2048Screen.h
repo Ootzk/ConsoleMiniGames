@@ -14,6 +14,7 @@ private:
 	std::unordered_map<intP, WALLPAPER> sprites = {
 		{0,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_0_back.txt"}},
 		{2,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_2_back.txt"}},
+		{3,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_3_back.txt"}}, //newly generated '2' block
 		{4,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_4_back.txt"}},
 		{8,    {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_8_back.txt"}},
 		{16,   {"../Game/blanktext.txt", "../Game/blankfont.txt", "../Game/num_16_back.txt"}},
@@ -27,15 +28,16 @@ private:
 	};
 
 	Board2048 B{ {
-		{1024, 1024, 1024, 1024},
+		{0, 0, 0, 0},
 		{0, 0, 0, 0},
 		{0, 0, 0, 0},
 		{0, 0, 0, 0}
 	} };
-	bool generated = false;
+	bool shifted = false;
+	intP generated_idx = 16;
 
 	std::vector<intP> zero_idx = { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-	intP max_block = 0;
+	intP max_block = 2;
 	intP movements = 0;
 
 	std::mt19937 random_engine{ std::random_device{}() };
