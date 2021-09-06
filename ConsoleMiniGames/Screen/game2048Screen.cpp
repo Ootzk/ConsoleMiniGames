@@ -23,6 +23,14 @@ bool Game2048Screen::_gen_random_block(intP num_blocks)
 	generated = true;
 }
 
+intP Game2048Screen::_score()
+{
+	int score = max_block * max_block - movements;
+	
+	if (score < 0) return 0;
+	else return score;
+}
+
 void Game2048Screen::_init(const MESSAGE& msg)
 {
 	if (msg.from != SCREEN::PAUSE) {
@@ -97,11 +105,11 @@ std::optional<MESSAGE> Game2048Screen::_update()
 		movements++;
 		generated = _gen_random_block();
 		if (not generated) {
-			return MESSAGE{ type, SCREEN::GAMEOVER,	{ "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
+			return MESSAGE{ type, SCREEN::GAMEOVER,	{ "Game: 2048", "Score: " + std::to_string(_score())} };
 		}
 		if (max_block == 2048) {
 			_draw();
-			return MESSAGE{ type, SCREEN::GAMECLEAR, { "Game             : 2048", "Score (max block): " + std::to_string(max_block), "Trial (movements): " + std::to_string(movements)} };
+			return MESSAGE{ type, SCREEN::GAMECLEAR, { "Game: 2048", "Score: " + std::to_string(_score())} };
 		}
 	}
 	_draw();

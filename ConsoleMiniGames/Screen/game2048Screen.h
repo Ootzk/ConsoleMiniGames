@@ -43,6 +43,7 @@ private:
 private:
 	void _draw(const Board2048& B);
 	bool _gen_random_block(intP num_blocks = 1);
+	intP _score();
 
 protected:
 	void _init(const MESSAGE& msg) override;
