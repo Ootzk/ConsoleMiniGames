@@ -38,5 +38,5 @@
                                                                                
                                                                                
                                                                                
-   press esc to quit           movements:                  max block:         
+   press esc to pause           movements:                  max block:         
                                                                               

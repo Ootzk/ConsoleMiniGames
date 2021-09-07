@@ -6,11 +6,11 @@ void GameOverScreen::_init(const MESSAGE& msg)
 	wallpaper.draw();
 
     setPalette(COLOR::LIGHTRED, COLOR::BLACK);
-    moveCursor({ 12, 27 });
+    moveCursor({ 17, 27 });
     for (intP i = 0; i < msg.msg.size(); ++i) {
         std::cout << msg.msg[i];
         Coordinate coord = getCursorLocation();
-        moveCursor({ 12, coord.y + 1 });
+        moveCursor({ 17, coord.y + 1 });
     }
 
     setPalette(COLOR::LIGHTRED, COLOR::BLACK);
