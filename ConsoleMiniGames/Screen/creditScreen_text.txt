@@ -22,20 +22,20 @@
                         version:                                               
                                                                                
                                                                                
-                               Special thanks to: ME                           
+                               Special thanks to:                              
+                                        ME                                     
+          Robert nystrom           : Game Programming Patterns                 
                                                                                
+          ascii art (screen titles): http://patorjk.com/software/taag/         
+          ascii art (drawings)     : https://ascii.co.uk/                      
                                                                                
-                                                                               
-                                                                               
-                                                                               
+          2048 implementation      : https://www.acmicpc.net/problem/12100     
                                                                                
                                                                                
                                                                                
                                                                                
                                                                                
                              >  back to main screen                            
-                                                                               
-                                                                               
                                                                                
                                                                                
                                                                                
