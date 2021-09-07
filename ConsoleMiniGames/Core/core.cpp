@@ -150,3 +150,5 @@ void WALLPAPER::draw(const Coordinate& offset)
 		text.close(); font.close(); back.close();
 	}
 }
+
+std::mt19937 random_engine{ std::random_device{}() };

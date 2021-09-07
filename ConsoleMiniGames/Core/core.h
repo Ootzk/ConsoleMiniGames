@@ -110,3 +110,5 @@ enum class DIRECTION
 	UP,
 	DOWN
 };
+
+extern std::mt19937 random_engine;
