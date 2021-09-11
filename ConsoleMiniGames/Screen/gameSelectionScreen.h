@@ -6,9 +6,9 @@ class GameSelectionScreen : public Screen
 private:
 	SCREEN type = SCREEN::GAMESELECT;
 	WALLPAPER wallpaper = {
-		"../Screen/gameSelectionScreen_text.txt",
-		"../Screen/gameSelectionScreen_font.txt",
-		"../Screen/gameSelectionScreen_back.txt",
+		"..\\Screen\\gameSelectionScreen_text.txt",
+		"..\\Screen\\gameSelectionScreen_font.txt",
+		"..\\Screen\\gameSelectionScreen_back.txt",
 	};
 	CHOICES choices = {
 		{SCREEN::GAME2048, Coordinate{12, 10}},

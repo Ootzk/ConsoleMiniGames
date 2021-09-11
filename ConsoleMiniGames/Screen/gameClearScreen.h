@@ -5,9 +5,9 @@ class GameClearScreen : public Screen
 {
 private:
 	WALLPAPER wallpaper = {
-		"../Screen/gameClearScreen_text.txt",
-		"../Screen/gameClearScreen_font.txt",
-		"../Screen/gameClearScreen_back.txt",
+		"..\\Screen\\gameClearScreen_text.txt",
+		"..\\Screen\\gameClearScreen_font.txt",
+		"..\\Screen\\gameClearScreen_back.txt",
 	};
 	CHOICES choices = {
 		{SCREEN::GAME2048, Coordinate{14, 32}},

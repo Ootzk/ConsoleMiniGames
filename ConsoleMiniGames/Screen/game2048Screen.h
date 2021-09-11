@@ -7,9 +7,9 @@ class Game2048Screen : public Screen
 private:
 	SCREEN type = SCREEN::GAME2048;
 	WALLPAPER wallpaper = {
-		"../Screen/game2048Screen_text.txt",
-		"../Screen/game2048Screen_font.txt",
-		"../Screen/game2048Screen_back.txt",
+		"..\\Screen\\game2048Screen_text.txt",
+		"..\\Screen\\game2048Screen_font.txt",
+		"..\\Screen\\game2048Screen_back.txt",
 	};
 	Game2048 G;
 

@@ -6,9 +6,9 @@ class CreditScreen : public Screen
 private:
 	SCREEN type = SCREEN::CREDIT;
 	WALLPAPER wallpaper = {
-		"../Screen/creditScreen_text.txt",
-		"../Screen/creditScreen_font.txt",
-		"../Screen/creditScreen_back.txt"
+		"..\\Screen\\creditScreen_text.txt",
+		"..\\Screen\\creditScreen_font.txt",
+		"..\\Screen\\creditScreen_back.txt"
 	};
 
 protected:

@@ -6,9 +6,9 @@ class MainScreen : public Screen
 private:
 	SCREEN type = SCREEN::MAIN;
 	WALLPAPER wallpaper = {
-		"../Screen/mainScreen_text.txt",
-		"../Screen/mainScreen_font.txt",
-		"../Screen/mainScreen_back.txt" 
+		"..\\Screen\\mainScreen_text.txt",
+		"..\\Screen\\mainScreen_font.txt",
+		"..\\Screen\\mainScreen_back.txt" 
 	};
 
 	CHOICES choices = {

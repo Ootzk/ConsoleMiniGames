@@ -6,9 +6,9 @@ class GameOverScreen : public Screen
 private:
 	SCREEN type = SCREEN::GAMEOVER;
 	WALLPAPER wallpaper = {
-		"../Screen/gameOverScreen_text.txt",
-		"../Screen/gameOverScreen_font.txt",
-		"../Screen/gameOverScreen_back.txt",
+		"..\\Screen\\gameOverScreen_text.txt",
+		"..\\Screen\\gameOverScreen_font.txt",
+		"..\\Screen\\gameOverScreen_back.txt",
 	};
 
 	CHOICES choices = {

@@ -6,9 +6,9 @@ class PauseScreen : public Screen
 private:
 	SCREEN type = SCREEN::PAUSE;
 	WALLPAPER wallpaper = {
-		"../Screen/pauseScreen_text.txt",
-		"../Screen/pauseScreen_font.txt",
-		"../Screen/pauseScreen_back.txt",
+		"..\\Screen\\pauseScreen_text.txt",
+		"..\\Screen\\pauseScreen_font.txt",
+		"..\\Screen\\pauseScreen_back.txt",
 	};
 	CHOICES choices = {
 		{SCREEN::MAIN,  Coordinate{15, 33}},
