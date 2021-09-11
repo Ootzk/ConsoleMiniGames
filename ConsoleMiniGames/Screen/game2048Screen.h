@@ -11,7 +11,6 @@ private:
 		"../Screen/game2048Screen_font.txt",
 		"../Screen/game2048Screen_back.txt",
 	};
-
 	Game2048 G;
 
 protected:

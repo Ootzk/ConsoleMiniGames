@@ -11,7 +11,7 @@ void Game2048Screen::_init(const MESSAGE& msg)
 
 	moveCursor();
 	setPalette();
-	G.draw(true);
+	G.draw();
 }
 
 std::optional<MESSAGE> Game2048Screen::_input()
@@ -68,7 +68,7 @@ std::optional<MESSAGE> Game2048Screen::_update()
 
 void Game2048Screen::_exit(const MESSAGE& msg)
 {
-	//always turn to SCREEN::PAUSE; so keep the all state when exit.
+	G.pause();
 }
 
 MESSAGE Game2048Screen::loop(const MESSAGE& msg)

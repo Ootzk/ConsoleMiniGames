@@ -10,31 +10,35 @@ enum class Game2048State
 
 class Game2048
 {
-	using board = std::vector<std::vector<intP>>;
-
-	enum class REDRAW
+	enum class CellDrawState
 	{
 		X,
 		O,
-		G
 	};
-	using redraw = std::vector<std::vector<REDRAW>>;
+	struct Cell
+	{
+		intP n = 0;
+		CellDrawState state = CellDrawState::O;
+	};
+	using board = std::vector<std::vector<Cell>>;
 
 private:
 	static std::unordered_map<intP, WALLPAPER> sprites;
-
+	
 	const board B_init{
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
-		{0, 0, 0, 0},
+		{{}, {}, {}, {}},
+		{{}, {}, {}, {}},
+		{{}, {}, {}, {}},
+		{{}, {}, {}, {}}
 	};
 	board B;
-	redraw R;
 
-	std::vector<intP> zero_idx = {0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-	intP max_block = 0;
-	intP movements = 0;
+	bool redraw;
+	std::vector<intP> zero_idxes;
+	intP generated_idx;
+	
+	intP max_block;
+	intP movements;
 
 	Game2048State gamestate = Game2048State::CONTINUE;
 
@@ -49,8 +53,9 @@ public:
 	const intP size = 4;
 
 	void clear();
+	void pause();
 	void shift(const DIRECTION& dir);
-	void draw(bool ignore_redraw=false);
+	void draw();
 	std::tuple<intP, intP> statistics();
 	intP score();
 	Game2048State state();
